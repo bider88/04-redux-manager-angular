@@ -28,4 +28,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Firebase
 
-To get more information about firebase and how to implement [Firebase README](https://github.com/angular/angularfire/blob/master/docs/install-and-setup.md).
+To get more information about firebase and how to implement [Firebase README](https://github.com/angular/angularfire).
