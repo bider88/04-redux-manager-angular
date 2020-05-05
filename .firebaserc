@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "income-expense-redux": {
+      "hosting": {
+        "redux-manager-angular": [
+          "income-expense-redux"
+        ]
+      }
+    }
+  }
+}

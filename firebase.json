@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "redux-manager-angular",
+      "public": "dist/redux-manager-angular",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

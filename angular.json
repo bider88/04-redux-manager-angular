@@ -122,8 +122,13 @@
               "devServerTarget": "redux-manager-angular:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "redux-manager-angular"
 }
