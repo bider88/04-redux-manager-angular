@@ -35,20 +35,18 @@ export class LoginComponent extends AuthAbstract implements OnInit {
   }
 
   authUser(): void {
-    console.log('this.authForm', this.authForm)
     if (this.authForm.valid) {
+      this.loading = true;
       const user: UserInterface = { ...this.authForm.value } as UserInterface;
       this.authService.loginUser(user).subscribe(
         credential => {
           console.log('credential', credential);
           this.router.navigate(['/']);
-        }, error => {
-          console.error(error);
-          this.toastService.showError({
-            title: AN_ERROR_HAS_OCURRED,
-            message: firebaseMessages(error.message)
-          });
-        }
+        }, error => this.toastService.showError({
+          title: AN_ERROR_HAS_OCURRED,
+          message: firebaseMessages(error.message)
+        }),
+        () => this.loading = false
       );
     }
   }

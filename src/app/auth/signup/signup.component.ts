@@ -37,23 +37,22 @@ export class SignupComponent extends AuthAbstract implements OnInit {
 
   authUser(): void {
     if (this.authForm.valid) {
+      this.loading = true;
       const user: UserInterface = { ...this.authForm.value } as UserInterface;
       this.authService.createUser(user).subscribe(
         credential => {
           console.log('credential', credential);
           this.toastService.showSuccess({
             title: 'Registro exitoso',
-            message: 'Se ha registrado exitosamente el usuario'
+            message: '¡Se ha registrado exitosamente!'
           });
           this.router.navigate(['/']);
         },
-        error => {
-          console.error(error);
-          this.toastService.showError({
-            title: AN_ERROR_HAS_OCURRED,
-            message: firebaseMessages(error.message)
-          });
-        }
+        error => this.toastService.showError({
+          title: AN_ERROR_HAS_OCURRED,
+          message: firebaseMessages(error.message)
+        }),
+        () => this.loading = false
       );
     }
   }

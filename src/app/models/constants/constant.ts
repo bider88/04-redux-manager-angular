@@ -21,6 +21,7 @@ export const firebaseMessages = (message) => {
     case ERROR_MESSAGES.invalidUser:
       return INVALID_EMAIL_AND_PASSWORD;
     default:
+      console.error('error: ', message);
       return AN_ERROR_HAS_OCURRED;
   }
 };

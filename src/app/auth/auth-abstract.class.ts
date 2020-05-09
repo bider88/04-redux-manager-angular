@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 export abstract class AuthAbstract {
 
   authForm: FormGroup;
+  loading = false;
 
   public abstract buildForm(): void;
   public abstract authUser(): void;

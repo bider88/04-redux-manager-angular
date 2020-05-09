@@ -7,14 +7,14 @@
           <form [formGroup]="authForm" (ngSubmit)="authUser()">
             <div class="form-group">
               <label fro ="" class="label">Correo electrónico</label>
-              <input type="email" class="form-control" [ngClass]="{'is-valid': isValidFormControlName('email')}" formControlName="email" id="email">
+              <input type="email" class="form-control" [ngClass]="{'is-valid': isValidFormControlName('email')}" formControlName="email" id="email" maxlength="100">
             </div>
             <div class="form-group">
               <label class="label">Contraseña</label>
               <input type="password" class="form-control" [ngClass]="{'is-valid': isValidFormControlName('password')}" formControlName="password" minlength="6" id="password">
             </div>
             <div class="form-group">
-              <button type="submit" [disabled]="authForm.invalid" class="btn btn-primary submit-btn btn-block">Iniciar sesión</button>
+              <button type="submit" [disabled]="authForm.invalid || loading" class="btn btn-primary submit-btn btn-block">Iniciar sesión</button>
             </div>
 
             <div class="text-block text-center my-3">

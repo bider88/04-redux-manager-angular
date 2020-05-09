@@ -7,20 +7,20 @@
           <form [formGroup]="authForm" (ngSubmit)="authUser()">
             <div class="form-group">
               <label for="name">Nombre</label>
-              <input type="text" class="form-control" [ngClass]="{'is-valid': isValidFormControlName('name')}" formControlName="name" id="name">
+              <input type="text" class="form-control" [ngClass]="{'is-valid': isValidFormControlName('name')}" formControlName="name" id="name" maxlength="100">
             </div>
             <div class="form-group">
               <label for="email">Correo electrónico</label>
-              <input type="email" class="form-control" [ngClass]="{'is-valid': isValidFormControlName('email')}" formControlName="email" id="email">
+              <input type="email" class="form-control" [ngClass]="{'is-valid': isValidFormControlName('email')}" formControlName="email" id="email" maxlength="100">
             </div>
             <div class="form-group">
               <label for="password">Contraseña</label>
-              <input type="password" class="form-control" [ngClass]="{'is-valid': isValidFormControlName('password')}" formControlName="password" minlength="6" id="password">
+              <input type="password" class="form-control" [ngClass]="{'is-valid': isValidFormControlName('password')}" formControlName="password" minlength="6" id="password" maxlength="32">
               <small class="form-text text-muted">La contraseña debe de ser al menos 6 caracteres.</small>
             </div>
 
             <div class="form-group">
-              <button type="submit" [disabled]="authForm.invalid" class="btn btn-primary submit-btn btn-block">Crear cuenta</button>
+              <button type="submit" [disabled]="authForm.invalid || loading" class="btn btn-primary submit-btn btn-block">Crear cuenta</button>
             </div>
             <div class="text-block text-center my-3">
               <span class="text-small font-weight-semibold">¿Ya tienes una cuenta?</span>
