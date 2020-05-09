@@ -5,39 +5,39 @@ import { UserInterface } from 'src/app/models/user/user.interface';
 import { Router } from '@angular/router';
 import { ToastService } from 'src/app/services/util/toast.service';
 import { firebaseMessages, AN_ERROR_HAS_OCURRED } from 'src/app/models/constants/constant';
+import { AuthAbstract } from '../auth-abstract.class';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
-export class SignupComponent implements OnInit {
-
-  signupForm: FormGroup;
+export class SignupComponent extends AuthAbstract implements OnInit {
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
     private toastService: ToastService
-  ) { }
+  ) {
+    super();
+  }
 
   ngOnInit(): void {
     this.buildForm();
   }
 
   buildForm(): void {
-    this.signupForm = this.fb.group({
+    this.authForm = this.fb.group({
       name: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
       password: [null, Validators.required]
     });
   }
 
-  createUser(): void {
-
-    if (this.signupForm.valid) {
-      const user: UserInterface = { ...this.signupForm.value } as UserInterface;
+  authUser(): void {
+    if (this.authForm.valid) {
+      const user: UserInterface = { ...this.authForm.value } as UserInterface;
       this.authService.createUser(user).subscribe(
         credential => {
           console.log('credential', credential);
@@ -56,10 +56,6 @@ export class SignupComponent implements OnInit {
         }
       );
     }
-  }
-
-  isValidFormControlName(control: string): boolean {
-    return this.signupForm.get(control).valid;
   }
 
 }
