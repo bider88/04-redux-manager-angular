@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth/auth.service';
+import { AuthService } from 'src/app/auth/services/auth/auth.service';
 import { Router } from '@angular/router';
 import { ToastService } from 'src/app/services/util/toast.service';
 import { AN_ERROR_HAS_OCURRED, firebaseMessages } from 'src/app/models/constants/constant';

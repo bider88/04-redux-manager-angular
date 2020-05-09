@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { UserInterface } from '../../models/user/user.interface';
+import { UserInterface } from '../../../models/user/user.interface';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -44,5 +46,11 @@ export class AuthService {
       .then(() => observer.next())
       .catch(error => observer.error(error));
     });
+  }
+
+  isAuth() {
+    return this.auth.authState.pipe(
+      map(user => user != null)
+    );
   }
 }

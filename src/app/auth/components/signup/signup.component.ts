@@ -5,7 +5,7 @@ import { UserInterface } from 'src/app/models/user/user.interface';
 import { Router } from '@angular/router';
 import { ToastService } from 'src/app/services/util/toast.service';
 import { firebaseMessages, AN_ERROR_HAS_OCURRED } from 'src/app/models/constants/constant';
-import { AuthAbstract } from '../auth-abstract.class';
+import { AuthAbstract } from '../../auth-abstract.class';
 
 @Component({
   selector: 'app-signup',

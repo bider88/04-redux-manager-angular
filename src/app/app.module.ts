@@ -11,8 +11,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { AppComponent } from './app.component';
 
-import { LoginComponent } from './auth/login/login.component';
-import { SignupComponent } from './auth/signup/signup.component';
+import { LoginComponent } from './auth/components/login/login.component';
+import { SignupComponent } from './auth/components/signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { IncomeExpenseComponent } from './income-expense/income-expense.component';
 import { StadisticComponent } from './income-expense/stadistic/stadistic.component';

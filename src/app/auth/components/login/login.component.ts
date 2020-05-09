@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth/auth.service';
+import { AuthService } from 'src/app/auth/services/auth/auth.service';
 import { Router } from '@angular/router';
 import { ToastService } from 'src/app/services/util/toast.service';
 import { UserInterface } from 'src/app/models/user/user.interface';
 import { firebaseMessages, AN_ERROR_HAS_OCURRED } from 'src/app/models/constants/constant';
-import { AuthAbstract } from '../auth-abstract.class';
+import { AuthAbstract } from '../../auth-abstract.class';
 
 @Component({
   selector: 'app-login',
