@@ -3,6 +3,7 @@ import { UserInterface } from '../../../models/user/user.interface';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 
 @Injectable({
@@ -11,7 +12,8 @@ import { map } from 'rxjs/operators';
 export class AuthService {
 
   constructor(
-    public auth: AngularFireAuth
+    private auth: AngularFireAuth,
+    private firestore: AngularFirestore
   ) { }
 
   initAuthListener() {
@@ -35,7 +37,12 @@ export class AuthService {
     const { email, password } = user;
     return new Observable(observer => {
       this.auth.createUserWithEmailAndPassword(email, password)
-      .then(credential => observer.next(credential))
+      .then(credential => {
+        const { user: { uid } } = credential;
+        user.uid = uid;
+        return this.saveUser(user);
+      })
+      .then(() => observer.next())
       .catch(error => observer.error(error));
     });
   }
@@ -52,5 +59,15 @@ export class AuthService {
     return this.auth.authState.pipe(
       map(user => user != null)
     );
+  }
+
+  saveUser(user: UserInterface): Promise<any> {
+    return new Promise((resolve, reject) => {
+      delete user.password;
+      this.firestore.doc(`${user.uid}/user`)
+      .set(user)
+      .then(() => resolve())
+      .catch(error => reject(error));
+    });
   }
 }

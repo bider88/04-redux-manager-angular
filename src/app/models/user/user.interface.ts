@@ -1,5 +1,6 @@
 export interface UserInterface {
-  name?: string;
+  uid?: string;
+  name: string;
   email: string;
-  password: string;
+  password?: string;
 }

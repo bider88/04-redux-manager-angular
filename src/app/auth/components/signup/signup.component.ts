@@ -40,8 +40,7 @@ export class SignupComponent extends AuthAbstract implements OnInit {
       this.loading = true;
       const user: UserInterface = { ...this.authForm.value } as UserInterface;
       this.authService.createUser(user).subscribe(
-        credential => {
-          console.log('credential', credential);
+        () => {
           this.toastService.showSuccess({
             title: 'Registro exitoso',
             message: '¡Se ha registrado exitosamente!'

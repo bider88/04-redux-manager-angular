@@ -39,8 +39,7 @@ export class LoginComponent extends AuthAbstract implements OnInit {
       this.loading = true;
       const user: UserInterface = { ...this.authForm.value } as UserInterface;
       this.authService.loginUser(user).subscribe(
-        credential => {
-          console.log('credential', credential);
+        () => {
           this.router.navigate(['/']);
         }, error => this.toastService.showError({
           title: AN_ERROR_HAS_OCURRED,
