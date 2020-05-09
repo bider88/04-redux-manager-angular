@@ -6,25 +6,25 @@ import { Router } from '@angular/router';
 import { ToastService } from 'src/app/services/util/toast.service';
 import { firebaseMessages, AN_ERROR_HAS_OCURRED } from 'src/app/models/constants/constant';
 import { AuthAbstract } from '../../auth-abstract.class';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.reducer';
+import * as ui from 'src/app/shared/ui.actions';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
-export class SignupComponent extends AuthAbstract implements OnInit {
+export class SignupComponent extends AuthAbstract {
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private toastService: ToastService
+    private toastService: ToastService,
+    store: Store<AppState>
   ) {
-    super();
-  }
-
-  ngOnInit(): void {
-    this.buildForm();
+    super(store);
   }
 
   buildForm(): void {
@@ -37,9 +37,9 @@ export class SignupComponent extends AuthAbstract implements OnInit {
 
   authUser(): void {
     if (this.authForm.valid) {
-      this.loading = true;
+      this.store.dispatch(ui.isLoading());
       const user: UserInterface = { ...this.authForm.value } as UserInterface;
-      this.authService.createUser(user).subscribe(
+      const subscription = this.authService.createUser(user).subscribe(
         () => {
           this.toastService.showSuccess({
             title: 'Registro exitoso',
@@ -51,8 +51,9 @@ export class SignupComponent extends AuthAbstract implements OnInit {
           title: AN_ERROR_HAS_OCURRED,
           message: firebaseMessages(error.message)
         }),
-        () => this.loading = false
+        () => this.stopLoading()
       );
+      this.subscriptions.push(subscription);
     }
   }
 

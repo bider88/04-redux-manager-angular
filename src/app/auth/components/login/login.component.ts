@@ -6,25 +6,25 @@ import { ToastService } from 'src/app/services/util/toast.service';
 import { UserInterface } from 'src/app/models/user/user.interface';
 import { firebaseMessages, AN_ERROR_HAS_OCURRED } from 'src/app/models/constants/constant';
 import { AuthAbstract } from '../../auth-abstract.class';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.reducer';
+import * as ui from 'src/app/shared/ui.actions';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent extends AuthAbstract implements OnInit {
+export class LoginComponent extends AuthAbstract {
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private toastService: ToastService
+    private toastService: ToastService,
+    store: Store<AppState>
   ) {
-    super();
-  }
-
-  ngOnInit(): void {
-    this.buildForm();
+    super(store);
   }
 
   buildForm(): void {
@@ -36,17 +36,18 @@ export class LoginComponent extends AuthAbstract implements OnInit {
 
   authUser(): void {
     if (this.authForm.valid) {
-      this.loading = true;
+      this.store.dispatch(ui.isLoading());
       const user: UserInterface = { ...this.authForm.value } as UserInterface;
-      this.authService.loginUser(user).subscribe(
+      const subscription = this.authService.loginUser(user).subscribe(
         () => {
           this.router.navigate(['/']);
         }, error => this.toastService.showError({
           title: AN_ERROR_HAS_OCURRED,
           message: firebaseMessages(error.message)
         }),
-        () => this.loading = false
+        () => this.stopLoading()
       );
+      this.subscriptions.push(subscription);
     }
   }
 }
