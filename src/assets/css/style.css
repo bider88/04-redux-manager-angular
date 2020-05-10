@@ -12514,7 +12514,8 @@ input:focus {
 /* Sidebar */
 .sidebar {
   min-height: calc(100vh - 63px);
-  background: #ffffff;
+  background-color: #424242 !important;
+  color: white !important;
   font-family: "Poppins", sans-serif;
   padding: 0;
   width: 255px;
@@ -12538,7 +12539,7 @@ input:focus {
       padding: 16px 35px;
       white-space: nowrap;
       height: 52px;
-      color: #4a4a4a; }
+      color: white; }
       .sidebar .nav .nav-item .nav-link i.menu-arrow {
         margin-left: auto;
         margin-right: 0;
@@ -12957,8 +12958,7 @@ address p {
 
 .card-title {
   font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  color: #404852;
+  font-weight: 600;
   margin-bottom: 22px;
   font-size: 14px;
   text-transform: capitalize; }
@@ -13039,7 +13039,8 @@ html {
       width: 100%; } }
 
 .content-wrapper {
-  background: #f2f8f9;
+  background: #333333;
+  color: white;
   padding: 1.5rem 1.7rem;
   width: 100%;
   -webkit-flex-grow: 1;
@@ -13066,13 +13067,14 @@ pre {
 
 /* Footer */
 .footer {
-  background: #f2f8f9;
+  background: #333333;
+  color: white;
   padding: 20px 1rem;
   transition: all 0.25s ease;
   -moz-transition: all 0.25s ease;
   -webkit-transition: all 0.25s ease;
   -ms-transition: all 0.25s ease;
-  border-top: 1px solid #f2f2f2;
+  border-top: 1px solid #202020;
   font-size: calc(13px - 0.05rem);
   font-family: "Poppins", sans-serif; }
   .footer a {
