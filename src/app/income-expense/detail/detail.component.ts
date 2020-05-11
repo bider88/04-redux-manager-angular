@@ -15,7 +15,7 @@ import { IncomeExpenseService } from '../services/income-expense.service';
 export class DetailComponent implements OnInit {
 
   incomeExpenseList: IncomeExpense[] = [];
-  subscription: Subscription;
+  subscriptions: Subscription[] = [];
   readonly income: incomeExpenseType = 'income';
   readonly expense: incomeExpenseType = 'expense';
 
@@ -30,9 +30,10 @@ export class DetailComponent implements OnInit {
   }
 
   getIncomeExpenseList() {
-    this.subscription = this.store.select('incomeExpense').subscribe(
+    const subscription = this.store.select('incomeExpense').subscribe(
       ({ items }) => this.incomeExpenseList = items
     );
+    this.subscriptions.push(subscription);
   }
 
   deleteItem(item: IncomeExpense) {
@@ -40,7 +41,7 @@ export class DetailComponent implements OnInit {
       title: ARE_YOU_SURE_TO_DELETE,
       message: item.description ? item.description : '',
     }, () => {
-      this.incomeExpenseService.delete(item).subscribe(
+      const subscription = this.incomeExpenseService.delete(item).subscribe(
         () => this.toastService.showSuccess({
           title: DELETE_SUCCESSFULLY,
           message: ''
@@ -50,6 +51,7 @@ export class DetailComponent implements OnInit {
           message: firebaseMessages(error)
         })
       );
+      this.subscriptions.push(subscription);
     });
   }
 
