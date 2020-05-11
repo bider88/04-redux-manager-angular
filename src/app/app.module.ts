@@ -31,6 +31,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
 import { environment } from '../environments/environment';
 import { TypeIncomeExpensePipe } from './income-expense/pipes/type-income-expense.pipe';
+import { SortPipe } from './income-expense/pipes/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { TypeIncomeExpensePipe } from './income-expense/pipes/type-income-expens
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
-    TypeIncomeExpensePipe
+    TypeIncomeExpensePipe,
+    SortPipe
   ],
   imports: [
     BrowserModule,

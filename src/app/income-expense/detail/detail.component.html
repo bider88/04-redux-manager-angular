@@ -15,7 +15,7 @@
           </thead>
 
           <tbody>
-            <tr *ngFor="let incomeExpense of incomeExpenseList">
+            <tr *ngFor="let incomeExpense of incomeExpenseList | sort">
               <td>{{ incomeExpense?.description }}</td>
               <td>{{ incomeExpense?.mount | currency }}</td>
               <td>
