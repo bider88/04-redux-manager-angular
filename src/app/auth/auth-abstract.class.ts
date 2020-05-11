@@ -9,7 +9,7 @@ import * as ui from 'src/app/shared/ui.actions';
 export abstract class AuthAbstract implements OnInit, OnDestroy {
 
   configLoader = {
-    animationType: ngxLoadingAnimationTypes.pulse,
+    animationType: ngxLoadingAnimationTypes.circleSwish,
     primaryColour: '#ffffff',
     secondaryColour: '#ccc',
     backdropBorderRadius: '3px'

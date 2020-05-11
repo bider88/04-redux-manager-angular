@@ -15,12 +15,18 @@ import * as authActions from '../../auth.actions';
 export class AuthService {
 
   private userSubscription: Subscription;
+  // tslint:disable-next-line: variable-name
+  private _user: UserInterface;
 
   constructor(
     private auth: AngularFireAuth,
     private firestore: AngularFirestore,
     private store: Store<AppState>
   ) { }
+
+  get user() {
+   return this._user;
+  }
 
   initAuthListener() {
     this.auth.authState.subscribe(
@@ -81,6 +87,7 @@ export class AuthService {
     if (user) {
       this.getUser(user);
     } else {
+      this._user = null;
       this.store.dispatch(authActions.unsetUser());
       if (this.userSubscription) {
         this.userSubscription.unsubscribe();
@@ -93,6 +100,7 @@ export class AuthService {
       (fUser: any) => {
         const { uid, name, email } = fUser;
         const newUser: UserInterface =  { uid, name, email } as UserInterface;
+        this._user = { ...newUser } as UserInterface;
         this.store.dispatch(authActions.setUser({user: newUser}));
       }
     );

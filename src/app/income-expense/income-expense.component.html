@@ -36,15 +36,17 @@
           </div>
 
           <hr>
-          <button type="submit" class="btn btn-success mr-2" [disabled]="incomeForm.invalid">
-            <i class="fa fa-save"></i>
-            Agregar
-          </button>
-
-          <button type="reset" class="btn btn-light" [disabled]="!(incomeForm.touched || incomeForm.dirty)">Cancelar</button>
+          <div class="d-flex justify-content-end">
+            <button type="reset" class="btn btn-light mr-2 px-4" (click)="setInitialType()" [disabled]="!(incomeForm.touched || incomeForm.dirty)">Cancelar</button>
+            <button type="submit" class="btn btn-success px-4" [disabled]="incomeForm.invalid">
+              <i class="fa fa-save"></i>
+              Agregar
+            </button>
+          </div>
 
         </form>
       </div>
+      <ngx-loading [show]="loading" [config]="configLoader" [template]="loadingTemplate"></ngx-loading>
     </div>
   </div>
 </div>

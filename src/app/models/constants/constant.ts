@@ -6,6 +6,7 @@ const ERROR_MESSAGES = {
 };
 
 export const AN_ERROR_HAS_OCURRED = 'Un error ha ocurrido';
+export const AN_ERROR_HAS_OCURRED_WHEN_WAS_PROCCESSED = 'Un error se ha generado al momento de procesar la información';
 export const INVALID_EMAIL_AND_PASSWORD = 'El correo y/o la contraseña son incorrectas';
 export const BAD_EMAIL = 'El email ingresado no tiene el formato válido';
 export const SHORT_PASSWORD = 'La contraseña debe ser de al menos 6 caracteres';
