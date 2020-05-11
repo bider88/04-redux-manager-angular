@@ -40,7 +40,10 @@ export class AuthService {
     const { email, password } = user;
     return new Observable(observer => {
       this.auth.signInWithEmailAndPassword(email, password)
-      .then(credential => observer.next(credential))
+      .then(credential => {
+        observer.next(credential);
+        observer.complete();
+      })
       .catch(error => observer.error(error));
     });
   }
@@ -54,7 +57,10 @@ export class AuthService {
         user.uid = uid;
         return this.saveUser(user);
       })
-      .then(() => observer.next())
+      .then(() => {
+        observer.next();
+        observer.complete();
+      })
       .catch(error => observer.error(error));
     });
   }
@@ -62,7 +68,10 @@ export class AuthService {
   logoutUser(): Observable<any> {
     return new Observable(observer => {
       this.auth.signOut()
-      .then(() => observer.next())
+      .then(() => {
+        observer.next();
+        observer.complete();
+      })
       .catch(error => observer.error(error));
     });
   }

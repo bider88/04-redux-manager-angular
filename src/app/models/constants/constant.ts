@@ -10,8 +10,10 @@ export const AN_ERROR_HAS_OCURRED_WHEN_WAS_PROCCESSED = 'Un error se ha generado
 export const INVALID_EMAIL_AND_PASSWORD = 'El correo y/o la contraseña son incorrectas';
 export const BAD_EMAIL = 'El email ingresado no tiene el formato válido';
 export const SHORT_PASSWORD = 'La contraseña debe ser de al menos 6 caracteres';
+export const ARE_YOU_SURE_TO_DELETE = '¿Estás seguro de eliminar el siguiente elemento?';
+export const DELETE_SUCCESSFULLY = 'Se ha eliminado correctamente';
 
-export const firebaseMessages = (message) => {
+export const firebaseMessages = ({ message }) => {
   switch (message) {
     case ERROR_MESSAGES.badEmail:
       return BAD_EMAIL;

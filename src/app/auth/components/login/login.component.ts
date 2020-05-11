@@ -43,7 +43,7 @@ export class LoginComponent extends AuthAbstract {
           this.router.navigate(['/']);
         }, error => this.toastService.showError({
           title: AN_ERROR_HAS_OCURRED,
-          message: firebaseMessages(error.message)
+          message: firebaseMessages(error)
         }),
         () => this.stopLoading()
       );

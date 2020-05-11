@@ -9,8 +9,8 @@ export interface ToastInterface {
   color?: colorType;
   position?: postionType;
   timeout?: number;
-  onOpening?(): any;
-  onOpened?(): any;
-  onClosing?(): any;
-  onClosed?(): any;
+  onOpening?(...args): any;
+  onOpened?(...args): any;
+  onClosing?(...args): any;
+  onClosed?(...args): any;
 }

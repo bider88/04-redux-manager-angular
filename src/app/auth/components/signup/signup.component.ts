@@ -49,7 +49,7 @@ export class SignupComponent extends AuthAbstract {
         },
         error => this.toastService.showError({
           title: AN_ERROR_HAS_OCURRED,
-          message: firebaseMessages(error.message)
+          message: firebaseMessages(error)
         }),
         () => this.stopLoading()
       );

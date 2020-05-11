@@ -6,7 +6,8 @@ export class IncomeExpense {
     public description: string,
     public mount: number,
     public type: incomeExpenseType,
-    // public uid?: string,
+    public uid?: string,
+    public createdAt?: Date
   ) { }
 
 }

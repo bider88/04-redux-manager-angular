@@ -30,6 +30,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
 import { environment } from '../environments/environment';
+import { TypeIncomeExpensePipe } from './income-expense/pipes/type-income-expense.pipe';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { environment } from '../environments/environment';
     DetailComponent,
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    TypeIncomeExpensePipe
   ],
   imports: [
     BrowserModule,

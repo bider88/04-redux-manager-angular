@@ -15,11 +15,24 @@
           </thead>
 
           <tbody>
-            <tr>
-              <td>Descripción</td>
-              <td>Monto</td>
-              <td>Tipo</td>
-              <td>acciones</td>
+            <tr *ngFor="let incomeExpense of incomeExpenseList">
+              <td>{{ incomeExpense?.description }}</td>
+              <td>{{ incomeExpense?.mount | currency }}</td>
+              <td>
+                <i class="fa"
+                [ngClass]="{
+                  'fa-sort-up text-success': incomeExpense?.type === income,
+                  'fa-sort-down text-danger': incomeExpense?.type === expense
+                }"
+                ></i>&nbsp;
+                {{ incomeExpense?.type | typeIncomeExpense }}
+              </td>
+              <td>
+                <button class="btn btn-danger" (click)="deleteItem(incomeExpense)">
+                  <i class="fa fa-trash"></i>
+                  Borrar
+                </button>
+              </td>
             </tr>
           </tbody>
 

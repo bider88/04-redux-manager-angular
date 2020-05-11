@@ -62,7 +62,8 @@ export class IncomeExpenseComponent implements OnInit, OnDestroy {
     if (this.incomeForm.valid) {
       this.store.dispatch(ui.isLoading());
       const { description, mount } = this.incomeForm.value;
-      const incomeExpense = new IncomeExpense(description, mount, this.type);
+      const incomeExpense = new IncomeExpense(description, mount, this.type, null, new Date());
+      delete incomeExpense.uid;
       this.incomeService.create(incomeExpense).subscribe(
         () => {
           this.store.dispatch(ui.stopLoading());

@@ -39,4 +39,24 @@ export class ToastService {
       ...toast,
     });
   }
+
+  showQuestion(toast: ToastInterface, confirm: () => any) {
+    iziToast.question({
+      position: 'center',
+      timeout: 60000,
+      close: false,
+      overlay: true,
+      zindex: 999,
+      buttons: [
+        ['<button id="querstionBtnYes"><b>Si</b></button>', (instance, toastQ) => {
+          instance.hide({ transitionOut: 'fadeOut' }, toastQ, 'button');
+          confirm();
+        }, true],
+        ['<button id="querstionBtnNo">NO</button>', (instance, toastQ) => {
+          instance.hide({ transitionOut: 'fadeOut' }, toastQ, 'button');
+        }, false],
+      ],
+      ...toast,
+    });
+  }
 }
