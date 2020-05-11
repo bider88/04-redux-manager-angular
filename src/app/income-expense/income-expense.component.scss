@@ -1,0 +1,15 @@
+.custom-group-button {
+  .btn:nth-child(1) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .btn:nth-child(2) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .active {
+    background: #0062c4;
+  }
+}

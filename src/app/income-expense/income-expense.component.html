@@ -7,42 +7,41 @@
           Especifique el monto y el tipo
         </p>
 
-        <form [formGroup]="">
+        <form [formGroup]="incomeForm" (ngSubmit)="save()">
 
           <div class="form-group">
-            <label>Descripción</label>
-            <input type="text" class="form-control" placeholder="Descripción" name="descripcion">
+            <label for="description">Descripción</label>
+            <input type="text" class="form-control" name="descripcion" formControlName="description" id="description" [ngClass]="{'is-valid': isValidFormControlName('description')}" maxlength="200">
           </div>
 
           <div class="form-group">
-            <label>Monto</label>
-            <input type="number" class="form-control" placeholder="Monto" name="monto">
-            <p>
-              Debe de ser un monto positivo
+            <label for="mount">Monto</label>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">$</div>
+              </div>
+              <input type="number" class="form-control" name="monto" formControlName="mount" id="mount" [ngClass]="{'is-valid': isValidFormControlName('mount')}">
+            </div>
+            <p class="text-danger">
+              <span *ngIf="!incomeForm.get('mount').errors?.min; else invalid">&nbsp;</span><ng-template #invalid>Debe de ser un monto válido (mayor a 0.01)</ng-template>
             </p>
           </div>
 
           <div class="form-group">
             <label>Tipo</label>
-            <br>
-            <button type="button" class="btn btn-primary btn-block">Ingreso</button>
-            <!-- <button type="button" class="btn btn-warning btn-block">Egreso</button> -->
+            <div class="custom-group-button row d-flex px-3 justify-content-between">
+              <button type="button" class="btn btn-primary flex-fill" [ngClass]="setClassActive(income)" (click)="setType(income)">Ingreso</button>
+              <button type="button" class="btn btn-primary flex-fill" [ngClass]="setClassActive(expense)" (click)="setType(expense)">Egreso</button>
+            </div>
           </div>
 
           <hr>
-          <button type="button" class="btn btn-success mr-2">
+          <button type="submit" class="btn btn-success mr-2" [disabled]="incomeForm.invalid">
             <i class="fa fa-save"></i>
             Agregar
           </button>
 
-          <!--
-              <button disabled class="btn btn-success mr-2">
-                <i class="fa fa-spin fa-sync"></i>
-                Espere por favor...
-              </button>
-            -->
-
-          <button type="reset" class="btn btn-light">Cancelar</button>
+          <button type="reset" class="btn btn-light" [disabled]="!(incomeForm.touched || incomeForm.dirty)">Cancelar</button>
 
         </form>
       </div>
