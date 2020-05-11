@@ -9,7 +9,7 @@ export class TypeIncomeExpensePipe implements PipeTransform {
   transform(type: incomeExpenseType): string {
     switch (type) {
       case 'income':
-        return 'Ingreso';
+        return 'Entrada';
       case 'expense':
         return 'Salida';
     }

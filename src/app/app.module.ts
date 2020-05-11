@@ -17,6 +17,9 @@ import { appReducers } from './app.reducer';
 // Loading
 import { NgxLoadingModule } from 'ngx-loading';
 
+// Chart.js
+import { ChartsModule } from 'ng2-charts';
+
 import { AppComponent } from './app.component';
 
 import { LoginComponent } from './auth/components/login/login.component';
@@ -61,7 +64,8 @@ import { SortPipe } from './income-expense/pipes/sort.pipe';
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    NgxLoadingModule.forRoot({})
+    NgxLoadingModule.forRoot({}),
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

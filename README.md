@@ -5,6 +5,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 # depedencies
 
 - Firebase ```npm i firebase```
+- izitoast ```npm install --save izitoast```
+- izitoast ```npm install --save ngx-loading```
+- Bootstrap ```npm install --save bootstrap```
+- ngrx ```npm install --save @ngrx/store```
+- ngrx devtools ```npm install --save @ngrx/store-devtools```
+- ng2-charts ```npm install --save ng2-charts```
+- chart.js ```npm install --save chart.js```
 
 ## Development server
 
