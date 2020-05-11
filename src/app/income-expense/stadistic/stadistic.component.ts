@@ -36,6 +36,10 @@ export class StadisticComponent implements OnInit {
   }
 
   generateStadistic(items: IncomeExpense[]) {
+    this.totalIncome = 0;
+    this.totalExpense = 0;
+    this.income = 0;
+    this.expense = 0;
     items.forEach(item => {
       if (item.type === 'income' as incomeExpenseType) {
         this.totalIncome += item.mount;
