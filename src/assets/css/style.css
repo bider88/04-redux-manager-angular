@@ -12513,7 +12513,12 @@ input:focus {
 
 /* Sidebar */
 .sidebar {
-  min-height: calc(100vh - 63px);
+  position: fixed;
+  top: 63px;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* min-height: calc(100vh - 63px); */
   background-color: #424242 !important;
   color: white !important;
   font-family: "Poppins", sans-serif;
@@ -13038,6 +13043,10 @@ html {
       margin-left: 0;
       width: 100%; } }
 
+.main-panel .content-wrapper {
+  margin-left: 255px;
+}
+
 .content-wrapper {
   background: #333333;
   color: white;
@@ -13067,6 +13076,9 @@ pre {
 
 /* Footer */
 .footer {
+  position: absolute;
+  left: 255px;
+  right: 0;
   background: #333333;
   color: white;
   padding: 20px 1rem;
