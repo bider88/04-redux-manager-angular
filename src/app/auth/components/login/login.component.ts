@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/auth/services/auth/auth.service';
 import { Router } from '@angular/router';
 import { ToastService } from 'src/app/services/util/toast.service';
@@ -7,8 +7,8 @@ import { UserInterface } from 'src/app/models/user/user.interface';
 import { firebaseMessages, AN_ERROR_HAS_OCURRED } from 'src/app/models/constants/constant';
 import { AuthAbstract } from '../../auth-abstract.class';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.reducer';
 import * as ui from 'src/app/shared/ui.actions';
+import { AppStateIncomeExpense } from 'src/app/income-expense/income-expense.reducer';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +22,7 @@ export class LoginComponent extends AuthAbstract {
     private authService: AuthService,
     private router: Router,
     private toastService: ToastService,
-    store: Store<AppState>
+    store: Store<AppStateIncomeExpense>
   ) {
     super(store);
   }

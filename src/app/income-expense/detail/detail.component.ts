@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.reducer';
 import { IncomeExpense, incomeExpenseType } from 'src/app/models/income-expense/income-expense.interface';
 import { Subscription } from 'rxjs';
 import { ToastService } from 'src/app/services/util/toast.service';
 import { ARE_YOU_SURE_TO_DELETE, firebaseMessages, AN_ERROR_HAS_OCURRED, DELETE_SUCCESSFULLY } from 'src/app/models/constants/constant';
 import { IncomeExpenseService } from '../services/income-expense.service';
+import { AppStateIncomeExpense } from '../income-expense.reducer';
 
 @Component({
   selector: 'app-detail',
@@ -20,7 +20,7 @@ export class DetailComponent implements OnInit {
   readonly expense: incomeExpenseType = 'expense';
 
   constructor(
-    private store: Store<AppState>,
+    private store: Store<AppStateIncomeExpense>,
     private toastService: ToastService,
     private incomeExpenseService: IncomeExpenseService
   ) { }

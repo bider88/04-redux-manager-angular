@@ -2,9 +2,9 @@ import { FormGroup } from '@angular/forms';
 import { ngxLoadingAnimationTypes } from 'ngx-loading';
 import { TemplateRef, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from '../app.reducer';
 import { Subscription } from 'rxjs';
 import * as ui from 'src/app/shared/ui.actions';
+import { AppStateIncomeExpense } from '../income-expense/income-expense.reducer';
 
 export abstract class AuthAbstract implements OnInit, OnDestroy {
 
@@ -20,7 +20,7 @@ export abstract class AuthAbstract implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
 
   constructor(
-    protected store: Store<AppState>
+    protected store: Store<AppStateIncomeExpense>
   ) {}
 
   ngOnInit(): void {

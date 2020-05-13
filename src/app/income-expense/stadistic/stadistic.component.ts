@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.reducer';
+import { AppStateIncomeExpense } from '../income-expense.reducer';
 import { IncomeExpense, incomeExpenseType } from 'src/app/models/income-expense/income-expense.interface';
 import { ChartType } from 'chart.js';
 import { MultiDataSet, Label } from 'ng2-charts';
@@ -22,7 +22,7 @@ export class StadisticComponent implements OnInit {
   public doughnutChartType: ChartType = 'doughnut';
 
   constructor(
-    private store: Store<AppState>
+    private store: Store<AppStateIncomeExpense>
   ) { }
 
   ngOnInit(): void {

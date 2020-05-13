@@ -5,8 +5,8 @@ import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.reducer';
 import * as authActions from '../../auth.actions';
+import { AppStateIncomeExpense } from 'src/app/income-expense/income-expense.reducer';
 
 
 @Injectable({
@@ -21,7 +21,7 @@ export class AuthService {
   constructor(
     private auth: AngularFireAuth,
     private firestore: AngularFirestore,
-    private store: Store<AppState>
+    private store: Store<AppStateIncomeExpense>
   ) { }
 
   get user() {

@@ -16,6 +16,8 @@ import { DetailComponent } from './detail/detail.component';
 
 import { TypeIncomeExpensePipe } from './pipes/type-income-expense.pipe';
 import { SortPipe } from './pipes/sort.pipe';
+import { StoreModule } from '@ngrx/store';
+import { incomeExpenseReducer } from './income-expense.reducer';
 
 
 
@@ -31,6 +33,7 @@ import { SortPipe } from './pipes/sort.pipe';
   imports: [
     CommonModule,
     RouterModule,
+    StoreModule.forFeature('incomeExpense', incomeExpenseReducer),
     ReactiveFormsModule,
     NgxLoadingModule.forRoot({}),
     ChartsModule,
