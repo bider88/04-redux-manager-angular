@@ -22,15 +22,13 @@ import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
 
-import { LoginComponent } from './auth/components/login/login.component';
-import { SignupComponent } from './auth/components/signup/signup.component';
+import { AuthModule } from './auth/auth.module';
+import { SharedModule } from './shared/shared.module';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { IncomeExpenseComponent } from './income-expense/income-expense.component';
 import { StadisticComponent } from './income-expense/stadistic/stadistic.component';
 import { DetailComponent } from './income-expense/detail/detail.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
 import { environment } from '../environments/environment';
 import { TypeIncomeExpensePipe } from './income-expense/pipes/type-income-expense.pipe';
@@ -39,15 +37,10 @@ import { SortPipe } from './income-expense/pipes/sort.pipe';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    SignupComponent,
     DashboardComponent,
     IncomeExpenseComponent,
     StadisticComponent,
     DetailComponent,
-    FooterComponent,
-    NavbarComponent,
-    SidebarComponent,
     TypeIncomeExpensePipe,
     SortPipe
   ],
@@ -65,7 +58,9 @@ import { SortPipe } from './income-expense/pipes/sort.pipe';
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
     NgxLoadingModule.forRoot({}),
-    ChartsModule
+    ChartsModule,
+    AuthModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

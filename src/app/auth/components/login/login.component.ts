@@ -41,11 +41,14 @@ export class LoginComponent extends AuthAbstract {
       const subscription = this.authService.loginUser(user).subscribe(
         () => {
           this.router.navigate(['/']);
-        }, error => this.toastService.showError({
-          title: AN_ERROR_HAS_OCURRED,
-          message: firebaseMessages(error)
-        }),
-        () => this.stopLoading()
+          this.stopLoading();
+        }, error => {
+          this.toastService.showError({
+            title: AN_ERROR_HAS_OCURRED,
+            message: firebaseMessages(error)
+          });
+          this.stopLoading();
+        }
       );
       this.subscriptions.push(subscription);
     }

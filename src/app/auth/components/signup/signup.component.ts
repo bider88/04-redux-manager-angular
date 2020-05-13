@@ -41,17 +41,15 @@ export class SignupComponent extends AuthAbstract {
       const user: UserInterface = { ...this.authForm.value } as UserInterface;
       const subscription = this.authService.createUser(user).subscribe(
         () => {
-          this.toastService.showSuccess({
-            title: 'Registro exitoso',
-            message: '¡Se ha registrado exitosamente!'
-          });
           this.router.navigate(['/']);
-        },
-        error => this.toastService.showError({
-          title: AN_ERROR_HAS_OCURRED,
-          message: firebaseMessages(error)
-        }),
-        () => this.stopLoading()
+          this.stopLoading();
+        }, error => {
+          this.toastService.showError({
+            title: AN_ERROR_HAS_OCURRED,
+            message: firebaseMessages(error)
+          });
+          this.stopLoading();
+        }
       );
       this.subscriptions.push(subscription);
     }
