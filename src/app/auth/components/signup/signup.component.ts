@@ -41,7 +41,7 @@ export class SignupComponent extends AuthAbstract {
       const user: UserInterface = { ...this.authForm.value } as UserInterface;
       const subscription = this.authService.createUser(user).subscribe(
         () => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/home']);
           this.stopLoading();
         }, error => {
           this.toastService.showError({

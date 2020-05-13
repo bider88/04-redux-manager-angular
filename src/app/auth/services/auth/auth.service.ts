@@ -76,9 +76,9 @@ export class AuthService {
     });
   }
 
-  isAuth() {
+  isAuth(): Observable<any> {
     return this.auth.authState.pipe(
-      map(user => user != null)
+      map(user => user !== null)
     );
   }
 
